@@ -15,6 +15,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleRoleNotFoundException(RoleNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> handleRoleNotFoundException(ProductNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception ex) {
