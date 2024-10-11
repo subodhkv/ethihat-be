@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.relation.RoleNotFoundException;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -29,7 +31,7 @@ public class AuthController {
     private UserDetailsService userDetailsService;
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
+    public ResponseEntity<User> registerUser(@RequestBody User user) throws RoleNotFoundException {
         User newUser = userService.registerUser(user);
         return ResponseEntity.ok(newUser);
     }
